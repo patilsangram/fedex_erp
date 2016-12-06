@@ -124,3 +124,5 @@ cur_frm.pformat.net_weight_pkg= function(doc){
 cur_frm.pformat.gross_weight_pkg= function(doc){
 	return '<table style="width:100%">' + make_row('Gross Weight', doc.gross_weight_pkg) + '</table>'
 }
+
+{% include "fedex_integration/fedex_integration/custom_packing_slip/custom_packing_slip.js" %}

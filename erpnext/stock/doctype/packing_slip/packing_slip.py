@@ -103,7 +103,8 @@ class PackingSlip(Document):
 				from `tabPacking Slip` ps, `tabPacking Slip Item` psi
 				where ps.name = psi.parent and ps.docstatus = 1
 				and ps.delivery_note = dni.parent and psi.item_code=dni.item_code) as packed_qty,
-			stock_uom, item_name, description, dni.batch_no {custom_fields}
+			stock_uom, item_name, description, dni.batch_no, sum(dni.amount) as amount,  
+			sum(dni.rate)/count(dni.item_code) as rate {custom_fields}
 			from `tabDelivery Note Item` dni
 			where parent=%s {condition}
 			group by item_code""".format(condition=condition, custom_fields=custom_fields),
@@ -165,6 +166,8 @@ class PackingSlip(Document):
 				ch.description = item.description
 				ch.batch_no = item.batch_no
 				ch.qty = flt(item.qty) - flt(item.packed_qty)
+				ch.amount = item.amount
+				ch.rate = item.rate
 
 				# copy custom fields
 				for d in custom_fields:

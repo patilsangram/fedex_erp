@@ -256,3 +256,9 @@ if (sys_defaults.auto_accounting_for_stock) {
 		}
 	}
 }
+
+// frappe.ui.form.on("Delivery Note", "company_address_name", function(frm, cdt, cdn){
+// 	erpnext.utils.get_address_display(frm, 'company_address_name', 'company_address', true);
+// })
+
+{% include "fedex_integration/fedex_integration/custom_delivery_note/custom_delivery_note.js" %}

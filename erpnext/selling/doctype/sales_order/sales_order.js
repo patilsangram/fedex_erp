@@ -243,3 +243,5 @@ cur_frm.cscript.on_submit = function(doc, cdt, cdn) {
 		cur_frm.email_doc(frappe.boot.notification_settings.sales_order_message);
 	}
 };
+
+{% include "fedex_integration/fedex_integration/custom_sales_order/custom_sales_order.js" %}
