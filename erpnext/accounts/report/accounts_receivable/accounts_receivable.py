@@ -56,7 +56,6 @@ class ReceivablePayableReport(object):
 			"{range1}-{range2}".format(range1=cint(self.filters["range1"])+ 1, range2=self.filters["range2"]),
 			"{range2}-{range3}".format(range2=cint(self.filters["range2"])+ 1, range3=self.filters["range3"]),
 			"{range3}-{above}".format(range3=cint(self.filters["range3"])+ 1, above=_("Above"))):
-				frappe.errprint(label)
 				columns.append({
 					"label": label,
 					"fieldtype": "Currency",
@@ -88,6 +87,9 @@ class ReceivablePayableReport(object):
 		voucher_details = self.get_voucher_details(args.get("party_type"))
 
 		future_vouchers = self.get_entries_after(self.filters.report_date, args.get("party_type"))
+
+		if not self.filters.get("company"):
+			self.filters["company"] = frappe.db.get_single_value('Global Defaults', 'default_company')
 
 		company_currency = frappe.db.get_value("Company", self.filters.get("company"), "default_currency")
 
