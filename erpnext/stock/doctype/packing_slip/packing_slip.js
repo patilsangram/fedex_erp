@@ -25,15 +25,15 @@ cur_frm.cscript.onload_post_render = function(doc, cdt, cdn) {
 	}
 }
 
-cur_frm.cscript.get_items = function(doc, cdt, cdn) {
-	return this.frm.call({
-		doc: this.frm.doc,
-		method: "get_items",
-		callback: function(r) {
-			if(!r.exc) cur_frm.refresh();
-		}
-	});
-}
+// cur_frm.cscript.get_items = function(doc, cdt, cdn) {
+// 	return this.frm.call({
+// 		doc: this.frm.doc,
+// 		method: "get_items",
+// 		callback: function(r) {
+// 			if(!r.exc) cur_frm.refresh();
+// 		}
+// 	});
+// }
 
 cur_frm.cscript.refresh = function(doc, dt, dn) {
 	cur_frm.toggle_display("misc_details", doc.amended_from);
