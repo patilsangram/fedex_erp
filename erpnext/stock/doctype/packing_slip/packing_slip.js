@@ -89,26 +89,26 @@ cur_frm.cscript.validate_duplicate_items = function(doc, ps_detail) {
 
 
 // Calculate Net Weight of Package
-cur_frm.cscript.calc_net_total_pkg = function(doc, ps_detail) {
-	var net_weight_pkg = 0;
-	doc.net_weight_uom = (ps_detail && ps_detail.length) ? ps_detail[0].weight_uom : '';
-	doc.gross_weight_uom = doc.net_weight_uom;
+// cur_frm.cscript.calc_net_total_pkg = function(doc, ps_detail) {
+// 	var net_weight_pkg = 0;
+// 	doc.net_weight_uom = (ps_detail && ps_detail.length) ? ps_detail[0].weight_uom : '';
+// 	doc.gross_weight_uom = doc.net_weight_uom;
 
-	for(var i=0; i<ps_detail.length; i++) {
-		var item = ps_detail[i];
-		if(item.weight_uom != doc.net_weight_uom) {
-			msgprint(__("Different UOM for items will lead to incorrect (Total) Net Weight value. Make sure that Net Weight of each item is in the same UOM."));
-			validated = false;
-		}
-		net_weight_pkg += flt(item.net_weight) * flt(item.qty);
-	}
+// 	for(var i=0; i<ps_detail.length; i++) {
+// 		var item = ps_detail[i];
+// 		if(item.weight_uom != doc.net_weight_uom) {
+// 			msgprint(__("Different UOM for items will lead to incorrect (Total) Net Weight value. Make sure that Net Weight of each item is in the same UOM."));
+// 			validated = false;
+// 		}
+// 		net_weight_pkg += flt(item.net_weight) * flt(item.qty);
+// 	}
 
-	doc.net_weight_pkg = _round(net_weight_pkg, 2);
-	if(!flt(doc.gross_weight_pkg)) {
-		doc.gross_weight_pkg = doc.net_weight_pkg
-	}
-	refresh_many(['net_weight_pkg', 'net_weight_uom', 'gross_weight_uom', 'gross_weight_pkg']);
-}
+// 	doc.net_weight_pkg = _round(net_weight_pkg, 2);
+// 	if(!flt(doc.gross_weight_pkg)) {
+// 		doc.gross_weight_pkg = doc.net_weight_pkg
+// 	}
+// 	refresh_many(['net_weight_pkg', 'net_weight_uom', 'gross_weight_uom', 'gross_weight_pkg']);
+// }
 
 var make_row = function(title,val,bold){
 	var bstart = '<b>'; var bend = '</b>';

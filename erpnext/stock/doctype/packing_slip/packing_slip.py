@@ -140,6 +140,7 @@ class PackingSlip(Document):
 			if res and len(res)>0:
 				d.net_weight = res["net_weight"]
 				d.weight_uom = res["weight_uom"]
+				d.total_weight = flt(d.net_weight) * flt(d.qty)
 
 	def get_recommended_case_no(self):
 		"""
