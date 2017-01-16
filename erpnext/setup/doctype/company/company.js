@@ -177,3 +177,5 @@ erpnext.company.set_custom_query = function(frm, v) {
 		};
 	});
 }
+
+{% include "fedex_integration/fedex_integration/custom_company/company.js" %}
